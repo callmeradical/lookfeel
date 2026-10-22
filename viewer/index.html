@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Better Than Boxes — Visual Evaluation & UX Review Store</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand">
+        <span class="brand-badge">BTB</span>
+        <h1>Visual Evaluation & Experience Store</h1>
+      </div>
+      <div class="run-selector-wrap">
+        <label for="run-select">Test Run:</label>
+        <select id="run-select"></select>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="review-status" id="review-status">
+        <span class="dot"></span> Evaluated: <strong id="eval-count">0</strong>/<span id="total-count">0</span>
+      </div>
+      <button class="btn btn-secondary" id="export-summary-btn">Export Feedback</button>
+    </div>
+  </header>
+
+  <nav class="flow-nav" id="flow-nav">
+    <button class="nav-btn active" data-flow="all">All Screens</button>
+    <button class="nav-btn" data-flow="operations">Operations</button>
+    <button class="nav-btn" data-flow="crm">CRM & Escalations</button>
+    <button class="nav-btn" data-flow="customer">Customer App</button>
+    <button class="nav-btn" data-flow="stickers">QR Stickers</button>
+  </nav>
+
+  <main class="main-layout">
+    <aside class="screen-sidebar">
+      <div class="sidebar-header">
+        <h3>Captured Screens</h3>
+        <span class="badge" id="screen-count-badge">0</span>
+      </div>
+      <div class="screen-list" id="screen-list"></div>
+    </aside>
+
+    <section class="review-stage" id="review-stage">
+      <div class="empty-state" id="empty-state">
+        <p>Select a screen from the left to start evaluating Look, Feel, Behavior, and Experience.</p>
+      </div>
+
+      <div class="active-screen-view" id="active-screen-view" style="display: none;">
+        <div class="stage-header">
+          <div>
+            <h2 id="screen-title">Screen Title</h2>
+            <div class="screen-meta">
+              <span class="meta-tag" id="screen-flow">Flow</span>
+              <span class="meta-tag" id="screen-viewport">Viewport</span>
+              <span class="meta-tag" id="screen-id">ID</span>
+            </div>
+          </div>
+          <div class="stage-actions">
+            <a id="open-full-btn" target="_blank" class="btn btn-outline">Open Full Image ↗</a>
+          </div>
+        </div>
+
+        <div class="stage-content">
+          <!-- Screenshot Preview Panel -->
+          <div class="preview-panel">
+            <div class="image-wrapper" id="image-wrapper">
+              <img id="current-screenshot" src="" alt="Test Screenshot">
+            </div>
+          </div>
+
+          <!-- Evaluation Feedback Form Panel -->
+          <div class="feedback-panel">
+            <div class="panel-header">
+              <h3>Design & Experience Evaluation</h3>
+              <p class="subtitle">Rate each dimension from 1 (Poor) to 5 (Exceptional)</p>
+            </div>
+
+            <form id="evaluation-form">
+              <!-- 1. LOOK -->
+              <div class="dimension-card" data-dimension="look">
+                <div class="dim-header">
+                  <div class="dim-title">
+                    <span class="dim-icon">🎨</span>
+                    <h4>Look</h4>
+                    <span class="dim-subtitle">Visual Design, Contrast, Hierarchy & Branding</span>
+                  </div>
+                  <div class="rating-stars" data-field="look">
+                    <button type="button" data-val="1">★</button>
+                    <button type="button" data-val="2">★</button>
+                    <button type="button" data-val="3">★</button>
+                    <button type="button" data-val="4">★</button>
+                    <button type="button" data-val="5">★</button>
+                  </div>
+                </div>
+                <textarea class="feedback-input" id="feedback-look" rows="2" placeholder="Feedback on colors, typography, tote badges, layout contrast..."></textarea>
+              </div>
+
+              <!-- 2. FEEL -->
+              <div class="dimension-card" data-dimension="feel">
+                <div class="dim-header">
+                  <div class="dim-title">
+                    <span class="dim-icon">✨</span>
+                    <h4>Feel</h4>
+                    <span class="dim-subtitle">Whitespace, Breathing Room & Component Polish</span>
+                  </div>
+                  <div class="rating-stars" data-field="feel">
+                    <button type="button" data-val="1">★</button>
+                    <button type="button" data-val="2">★</button>
+                    <button type="button" data-val="3">★</button>
+                    <button type="button" data-val="4">★</button>
+                    <button type="button" data-val="5">★</button>
+                  </div>
+                </div>
+                <textarea class="feedback-input" id="feedback-feel" rows="2" placeholder="Feedback on spacing, margins, responsive adaptation, premium feel..."></textarea>
+              </div>
+
+              <!-- 3. BEHAVIOR -->
+              <div class="dimension-card" data-dimension="behavior">
+                <div class="dim-header">
+                  <div class="dim-title">
+                    <span class="dim-icon">⚡</span>
+                    <h4>Behavior</h4>
+                    <span class="dim-subtitle">Affordance, State Changes & Clarity of Actions</span>
+                  </div>
+                  <div class="rating-stars" data-field="behavior">
+                    <button type="button" data-val="1">★</button>
+                    <button type="button" data-val="2">★</button>
+                    <button type="button" data-val="3">★</button>
+                    <button type="button" data-val="4">★</button>
+                    <button type="button" data-val="5">★</button>
+                  </div>
+                </div>
+                <textarea class="feedback-input" id="feedback-behavior" rows="2" placeholder="Feedback on button affordances, selection cues, transitions..."></textarea>
+              </div>
+
+              <!-- 4. EXPERIENCE -->
+              <div class="dimension-card" data-dimension="experience">
+                <div class="dim-header">
+                  <div class="dim-title">
+                    <span class="dim-icon">🎯</span>
+                    <h4>Experience</h4>
+                    <span class="dim-subtitle">Intuitiveness, Efficiency & Operational Delight</span>
+                  </div>
+                  <div class="rating-stars" data-field="experience">
+                    <button type="button" data-val="1">★</button>
+                    <button type="button" data-val="2">★</button>
+                    <button type="button" data-val="3">★</button>
+                    <button type="button" data-val="4">★</button>
+                    <button type="button" data-val="5">★</button>
+                  </div>
+                </div>
+                <textarea class="feedback-input" id="feedback-experience" rows="2" placeholder="Feedback on ease of comprehension, journey flow, friction points..."></textarea>
+              </div>
+
+              <!-- Summary & Action Items -->
+              <div class="overall-section">
+                <label for="eval-summary">Overall Summary & Action Items</label>
+                <textarea class="feedback-input" id="eval-summary" rows="3" placeholder="Key takeaways and specific UI/UX enhancements needed..."></textarea>
+              </div>
+
+              <div class="form-actions">
+                <span class="save-status" id="save-status"></span>
+                <button type="submit" class="btn btn-primary" id="save-feedback-btn">Save Evaluation</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

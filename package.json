@@ -1,0 +1,30 @@
+{
+  "name": "lookfeel",
+  "version": "0.1.0",
+  "description": "Visual evaluation and screenshot testing harness for frontend developers & agentic coding loops",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "lookfeel": "bin/lookfeel.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "capture": "node bin/lookfeel.js capture",
+    "review": "node bin/lookfeel.js review"
+  },
+  "keywords": [
+    "playwright",
+    "screenshots",
+    "visual-regression",
+    "agentic-coding",
+    "ai-agents",
+    "evaluation",
+    "frontend-testing",
+    "ux-review"
+  ],
+  "author": "Lars Cromley <lars@cromleylabs.com>",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
