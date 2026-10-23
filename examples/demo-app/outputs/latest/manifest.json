@@ -1,0 +1,50 @@
+{
+  "runId": "run-2026-10-23T00-22-20-754Z",
+  "timestamp": "2026-10-23T00:22:20.755Z",
+  "metadata": {
+    "app": "PulseAI",
+    "version": "1.0.0-demo"
+  },
+  "screenshots": [
+    {
+      "filename": "01-cockpit-desktop.png",
+      "screenId": "01-cockpit-desktop",
+      "title": "Agent Cockpit & Telemetry (Desktop)",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capturedAt": "2026-10-23T00:22:22.168Z"
+    },
+    {
+      "filename": "02-cockpit-mobile.png",
+      "screenId": "02-cockpit-mobile",
+      "title": "Agent Cockpit (Mobile Responsive)",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAt": "2026-10-23T00:22:23.253Z"
+    },
+    {
+      "filename": "03-agent-inspector-modal.png",
+      "screenId": "03-agent-inspector-modal",
+      "title": "Agent Inspector Modal Dialog",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capturedAt": "2026-10-23T00:22:24.963Z"
+    },
+    {
+      "filename": "04-chaos-injected-telemetry.png",
+      "screenId": "04-chaos-injected-telemetry",
+      "title": "Live Anomaly Injected State",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capturedAt": "2026-10-23T00:22:26.564Z"
+    }
+  ]
+}

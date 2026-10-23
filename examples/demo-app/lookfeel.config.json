@@ -1,0 +1,28 @@
+{
+  "outputDir": "./outputs",
+  "metadata": {
+    "app": "PulseAI Observability Dashboard",
+    "environment": "demo-local"
+  },
+  "screens": [
+    {
+      "id": "01-cockpit-desktop",
+      "title": "Agent Cockpit & Telemetry (Desktop)",
+      "url": "http://localhost:3000",
+      "viewport": { "width": 1440, "height": 900 }
+    },
+    {
+      "id": "02-cockpit-mobile",
+      "title": "Agent Cockpit (Mobile Responsive)",
+      "url": "http://localhost:3000",
+      "viewport": { "width": 390, "height": 844 }
+    },
+    {
+      "id": "03-agent-inspector-modal",
+      "title": "Agent Inspector Modal Dialog",
+      "url": "http://localhost:3000",
+      "viewport": { "width": 1440, "height": 900 },
+      "action": "openModal"
+    }
+  ]
+}

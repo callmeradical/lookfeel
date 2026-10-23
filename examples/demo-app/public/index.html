@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseAI — Agentic Cloud Observability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="theme-dark">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">PulseAI</span>
+          <span class="brand-badge">PROD</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#overview" class="nav-item active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Cockpit</span>
+        </a>
+        <a href="#agents" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+          <span>Autonomous Fleet</span>
+          <span class="count-pill">6</span>
+        </a>
+        <a href="#anomalies" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Anomalies</span>
+          <span class="alert-pill">2</span>
+        </a>
+        <a href="#workflows" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>Self-Healing Runs</span>
+        </a>
+        <a href="#evals" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>LookFeel Audits</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="agent-pulse-card">
+          <div class="pulse-indicator">
+            <span class="pulse-dot"></span>
+            <span class="pulse-text">Critic Agent 04 Active</span>
+          </div>
+          <p class="pulse-sub">Continuous invariant check at 1.4s cadence</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Viewport -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-bar">
+        <div class="header-breadcrumb">
+          <span class="crumb-root">Cluster us-east-1</span>
+          <span class="crumb-separator">/</span>
+          <span class="crumb-current">Agent Fleet Cockpit</span>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-trigger-anomaly" class="btn btn-secondary">
+            <span class="btn-icon">⚡</span> Inject Chaos Event
+          </button>
+          <button id="btn-new-agent" class="btn btn-primary">
+            <span class="btn-icon">+</span> Deploy Agent Worker
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-container">
+        <!-- Top KPI Metric Cards -->
+        <section class="kpi-grid">
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Fleet Health Index</span>
+              <span class="trend positive">+2.4%</span>
+            </div>
+            <div class="metric-value">99.82%</div>
+            <div class="metric-footer">
+              <span class="bar-fill" style="width: 98%;"></span>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Self-Healed Incidents</span>
+              <span class="trend neutral">24h window</span>
+            </div>
+            <div class="metric-value">42 / 44</div>
+            <div class="metric-footer text-muted">95.4% autonomous recovery</div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-header">
+              <span class="metric-title">Token Velocity</span>
+              <span class="trend positive">3.1k t/sec</span>
+            </div>
+            <div class="metric-value">1.84M</div>
+            <div class="metric-footer text-muted">Estimated cost: $1.42</div>
+          </div>
+
+          <div class="card metric-card warning-state">
+            <div class="metric-header">
+              <span class="metric-title">Open Anomalies</span>
+              <span class="badge badge-warning">Action Needed</span>
+            </div>
+            <div class="metric-value">2</div>
+            <div class="metric-footer text-warning">Latency regression in Gateway P99</div>
+          </div>
+        </section>
+
+        <!-- Main Content Columns -->
+        <div class="content-split">
+          <!-- Active Agents Table -->
+          <section class="card table-card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Autonomous Agents Running</h2>
+                <p class="card-subtitle">Active agents resolving live telemetry anomalies</p>
+              </div>
+              <div class="table-actions">
+                <input type="text" class="input-search" placeholder="Filter agents...">
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Agent ID</th>
+                    <th>Role</th>
+                    <th>Target Scope</th>
+                    <th>State</th>
+                    <th>Confidence</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="agent-table-body">
+                  <tr>
+                    <td>
+                      <div class="agent-cell">
+                        <div class="agent-avatar bot-alpha">α</div>
+                        <div>
+                          <div class="agent-name">agent-alpha-881</div>
+                          <div class="agent-time">Spawned 4m ago</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="pill pill-role">Builder</span></td>
+                    <td><code>lambda-edge-proxy</code></td>
+                    <td><span class="status-indicator online"></span> Synthesizing patch</td>
+                    <td><strong>98.4%</strong></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline btn-inspect">Inspect</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="agent-cell">
+                        <div class="agent-avatar bot-critic">Δ</div>
+                        <div>
+                          <div class="agent-name">critic-delta-02</div>
+                          <div class="agent-time">Spawned 2m ago</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="pill pill-role critic">Critic</span></td>
+                    <td><code>playwright-journey</code></td>
+                    <td><span class="status-indicator audit"></span> Running LookFeel audit</td>
+                    <td><strong>99.9%</strong></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline btn-inspect">Inspect</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="agent-cell">
+                        <div class="agent-avatar bot-remediator">Ω</div>
+                        <div>
+                          <div class="agent-name">omega-drainer</div>
+                          <div class="agent-time">Spawned 18m ago</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="pill pill-role">Remediator</span></td>
+                    <td><code>sqs-dlq-broker</code></td>
+                    <td><span class="status-indicator idle"></span> Idle / Listening</td>
+                    <td><strong>100%</strong></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline btn-inspect">Inspect</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Real-Time Activity Log Feed -->
+          <section class="card log-card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Live Telemetry & Invariants</h2>
+                <p class="card-subtitle">Streaming agent actions & telemetry</p>
+              </div>
+              <span class="live-dot-badge">LIVE STREAM</span>
+            </div>
+
+            <div class="log-stream" id="log-stream">
+              <div class="log-item">
+                <span class="log-time">20:19:42</span>
+                <span class="log-tag tag-pass">PASS</span>
+                <span class="log-msg">Playwright visual check passed on <code>/dashboard</code> (Score 96/100)</span>
+              </div>
+              <div class="log-item warn">
+                <span class="log-time">20:18:11</span>
+                <span class="log-tag tag-warn">WARN</span>
+                <span class="log-msg">P99 Latency exceeded 450ms on regional endpoint <code>iad-02</code></span>
+              </div>
+              <div class="log-item">
+                <span class="log-time">20:17:05</span>
+                <span class="log-tag tag-agent">AGENT</span>
+                <span class="log-msg">critic-delta-02 initiated UI snapshot verification via lookfeel</span>
+              </div>
+              <div class="log-item">
+                <span class="log-time">20:15:20</span>
+                <span class="log-tag tag-pass">PASS</span>
+                <span class="log-msg">Zero regression detected in customer checkout funnel</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Slide-in Inspection Modal (Hidden by default, triggered on inspect) -->
+    <div id="inspect-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 class="modal-title" id="modal-agent-name">Agent Inspector</h3>
+            <span class="badge badge-primary" id="modal-agent-status">Active</span>
+          </div>
+          <button id="modal-close" class="btn-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section">
+            <label class="modal-label">Goal Prompt</label>
+            <div class="code-box" id="modal-prompt">Verify visual regressions on edge navigation and submit LookFeel ratings.</div>
+          </div>
+          <div class="modal-section">
+            <label class="modal-label">Execution Trace</label>
+            <ul class="trace-list">
+              <li>✅ Initialized Chromium headless via <code>launchBrowser()</code></li>
+              <li>✅ Loaded <code>http://localhost:3000</code> in 1440x900 viewport</li>
+              <li>✅ Saved snapshot <code>01-cockpit-desktop.png</code></li>
+              <li>⏳ Scoring Look / Feel / Behavior / Experience rubrics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="modal-btn-dismiss">Close</button>
+          <button class="btn btn-primary" id="modal-btn-approve">Approve Agent Patch</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
